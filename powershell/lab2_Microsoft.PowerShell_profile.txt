@@ -1,0 +1,14 @@
+$env:path += ";$home/documents/github/comp2101/powershell";
+New-item -Path Alias:np -va Notepad | Out-null;
+function Welcome {
+Write-output "Welcome to planet $env:computername OverLord $env:username"
+$now = get-date -f 'HH:MM tt on dddd'
+Write-output "It is $now."
+};
+function Get-cpuinfo {
+Get-cimInstance -Cl cim_processor | format-list Manufacturer, Name, CurrentClockSpeed, MaxClockSpeed, NumberOfCores
+};
+function get-mydisks{
+Get-physicalDisk | FL Manufacturer, Model, SerialNumber, FirmwareVersion, Size
+};
+Welcome
